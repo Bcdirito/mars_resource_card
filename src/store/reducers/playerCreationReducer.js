@@ -1,28 +1,31 @@
 const initialState = {
-    username: "",
+    playerName: "",
     color: ""
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case "CREATE_USER":
-            localStorage.setItem("user", action.username)
+        case "CREATE_PLAYER":
+            debugger
+            localStorage.setItem("player", action.playerName)
             return {
-                username: action.name,
+                playerName: action.playerName,
                 color: action.color
             }
         
-        case "MAINTAIN_USER":
+        case "MAINTAIN_PLAYER":
             return {
-                username: action.username,
+                playerName: action.playerName,
                 color: action.color
             }
         
-        case "LOGOUT_USER":
+        case "LOGOUT_PLAYER":
             localStorage.clear()
             return {
-                username: "",
+                playerName: "",
                 color: ""
             }
     }
 }
+
+export default reducer
