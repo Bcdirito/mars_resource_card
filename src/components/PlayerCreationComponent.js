@@ -74,7 +74,7 @@ class PlayerCreation extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createPlayer: (playerName, color) => dispatch({type: "CREATE_PLAYER", playerName, color})
+        createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color))
     }
 }
 

@@ -9,7 +9,7 @@ import {Provider} from "react-redux"
 import playerReducer from "./store/reducers/playerCreationReducer"
 import resourceReducer from "./store/reducers/resourceReducer"
 
-const rootReducer = combineReducers({player: playerReducer, resource: resourceReducer})
+const rootReducer = combineReducers({player: playerReducer, resources: resourceReducer})
 
 const store = createStore(rootReducer)
 

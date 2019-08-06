@@ -6,16 +6,17 @@ const initialState = {
 const playerReducer = (state = initialState, action) => {
     switch(action.type) {
         case "CREATE_PLAYER":
-            localStorage.setItem("player", action.playerName)
+            debugger
+            localStorage.setItem("player", action.name)
             localStorage.setItem("color", action.color)
             return {
-                playerName: action.playerName,
+                playerName: action.name,
                 color: action.color
             }
         
         case "MAINTAIN_PLAYER":
             return {
-                playerName: action.playerName,
+                playerName: action.name,
                 color: action.color
             }
         
