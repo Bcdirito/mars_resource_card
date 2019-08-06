@@ -6,8 +6,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case "CREATE_PLAYER":
-            debugger
             localStorage.setItem("player", action.playerName)
+            localStorage.setItem("color", action.color)
             return {
                 playerName: action.playerName,
                 color: action.color
@@ -25,6 +25,9 @@ const reducer = (state = initialState, action) => {
                 playerName: "",
                 color: ""
             }
+        
+        default:
+            return state
     }
 }
 

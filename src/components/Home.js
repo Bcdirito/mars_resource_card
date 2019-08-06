@@ -18,7 +18,7 @@ export default class Home extends Component {
             <h1>
               Welcome to your Terraforming Mars Resource Card
             </h1>
-            <Link to={"/create-player"}><h2 onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)}>Enter</h2></Link>
+            <Link to={"/create-player"} className="enterLink"><h2 onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)}>Enter</h2></Link>
         </div>
         )
     }

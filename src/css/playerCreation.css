@@ -1,0 +1,93 @@
+.playerCreation {
+    margin-top: 16%;
+    height: 30vh;
+    padding-top: 5%;
+    padding-bottom: 15%;
+    text-align: center;
+}
+
+.playerCreation h2 {
+    animation: fadein .5s;
+}
+
+.playerCreation form {
+    width: 75%;
+    margin: auto;
+    border-style: outset;
+    padding-top: 1%;
+    font-size: 18px;
+    animation: fadein 1.25s linear 1 normal forwards;
+}
+
+
+.playerCreation input.username {
+    width: 40%;
+    height: 27px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.playerCreation select {
+    width: 11%;
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
+    height: 25px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.playerCreation .submit {
+    height: 35px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: whitesmoke;
+    color: black;
+    border-style: outset;
+    border-color: black;
+    border-width: 2px;
+    font-size: 18px;
+}
+
+.playerCreation .hoverSubmit {
+    height: 35px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: black;
+    color: whitesmoke;
+    border-style: outset;
+    border-color: black;
+    border-width: 2px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.redPlayer {
+    border-color: rgb(220, 51, 45);
+    background-color: rgba(220, 51, 45, .5);
+}
+
+.yellowPlayer {
+    border-color: rgb(249, 235, 71);
+    background-color: rgb(249, 235, 71, .65)
+}
+
+.blackPlayer {
+    border-color: rgb(39, 34, 35);
+    background-color: rgba(72, 58, 58, 0.5);
+}
+
+.bluePlayer {
+    border-color: rgb(51, 138, 211);
+    background-color: rgba(51, 138, 211, .5)
+}
+
+.greenPlayer {
+    border-color: rgb(80, 163, 89);
+    background-color: rgba(80, 163, 89, .5)
+}
+
+@keyframes fadein {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
