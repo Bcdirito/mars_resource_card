@@ -3,7 +3,7 @@ const initialState = {
     color: ""
 }
 
-const reducer = (state = initialState, action) => {
+const playerReducer = (state = initialState, action) => {
     switch(action.type) {
         case "CREATE_PLAYER":
             localStorage.setItem("player", action.playerName)
@@ -31,4 +31,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer
+export default playerReducer

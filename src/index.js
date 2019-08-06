@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from "react-router-dom"
-import {createStore} from "redux"
+import {createStore, combineReducers} from "redux"
 import {Provider} from "react-redux"
-import reducer from "./store/reducers/playerCreationReducer"
+import playerReducer from "./store/reducers/playerCreationReducer"
+import resourceReducer from "./store/reducers/resourceReducer"
 
-const store = createStore(reducer)
+const rootReducer = combineReducers({player: playerReducer, resource: resourceReducer})
+
+const store = createStore(rootReducer)
 
 ReactDOM.render(
         <Provider store={store}>

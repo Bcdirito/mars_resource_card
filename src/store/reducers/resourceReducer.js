@@ -25,7 +25,7 @@ const initialState = {
     }
 }
 
-const reducer = (state = initialState, action) => {
+const resourceReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CHANGE_PRODUCTION":
             return {
@@ -48,4 +48,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer
+export default resourceReducer
