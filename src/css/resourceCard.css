@@ -1,9 +1,53 @@
 #resourceCard {
     background-color: rgba(255, 255, 255, .75);
-    margin-top: 10%;
+    margin-top: 1.5%;
     border-style: outset;
+    overflow: scroll;
+    height: 95vh;
 }
 
-.yellowPlayer {
-    border-color: rgb(249, 235, 71)
+.resources {
+    margin:auto;
+    margin-left: 8%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 285% 285%
+}
+
+.resourceArea {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.resourceHeader {
+    background-color: whitesmoke;
+}
+
+#credits {
+    background-image: url(../media/resource_photos/mars_credits.jpg);
+}
+
+#steel {
+    background-image: url(../media/resource_photos/mars_steel.jpg);
+}
+
+#titanium {
+    background-image: url(../media/resource_photos/mars_titanium.jpg)
+}
+
+#plants {
+    background-image: url(../media/resource_photos/mars_plants.jpg)
+}
+
+#energy {
+    background-image: url(../media/resource_photos/mars_energy.jpg)
+}
+
+#heat {
+    background-image: url(../media/resource_photos/mars_heat.jpg)
 }

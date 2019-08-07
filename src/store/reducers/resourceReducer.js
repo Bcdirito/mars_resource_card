@@ -1,5 +1,5 @@
 const initialState = {
-    "gold": {
+    "credits": {
         "amount": 0,
         "production": 20
     },
