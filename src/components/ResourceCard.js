@@ -15,57 +15,48 @@ class ResourceCard extends Component {
   componentDidMount = () => {
     if (this.state.username === "" && localStorage.player){
       this.props.reloadPlayer(localStorage)
-      this.props.reloadProduction(localStorage)
     }
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    if(prevState.username === ""){
+    if(prevState.username !== this.props.player.playerName){
       this.setState({
         username: this.props.player.playerName,
         color: `${this.props.player.color}Player`
-      }, () => console.log(this.state))
+      })
     }
+
+    this.updateResources(this.props.resources)
+  }
+
+  updateResources = (resources) => {
+    console.log(resources)
+  }
+
+  renderResources = (resources) => {
+    let resourceSpaces = Object.keys(resources).map(key => {
+      let resourceObj = this.state.resources[key]
+      let resourceName = `${key[0].toUpperCase()}${key.slice(1)}`
+      return (
+        <div id={key} className="resourceArea">
+          <span className="resourceHeader">{resourceName} Production: {resourceObj["production"]}</span>
+          <br/>
+          <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
+        </div>
+      )
+    })
+
+    return resourceSpaces
   }
 
 
   render() {
-    console.log(this.state.resources)
     return (
       <div id="resourceCard" className={this.state.color}>
         <div>
           <h2>{this.state.username}'s Card</h2>
           <div className="resources">
-            <div id="credits" className="resourceArea">
-              <span className="resourceHeader">Credits Production: {this.state.resources.credits.production}</span>
-              <br></br>
-              <span className="resourceHeader">Total Credits: {this.state.resources.credits.amount}</span>
-            </div>
-            <div id="steel" className="resourceArea">
-              <span className="resourceHeader">Steel Production: {this.state.resources.steel.production}</span>
-                <br></br>
-                <span className="resourceHeader">Total Steel: {this.state.resources.steel.amount}</span>
-            </div>
-            <div id="titanium" className="resourceArea">
-            <span className="resourceHeader">Titanium Production:</span>
-                <br></br>
-                <span className="resourceHeader">Total Titanium:</span>
-            </div>
-            <div id="plants" className="resourceArea">
-            <span className="resourceHeader">Plant Production:</span>
-                <br></br>
-                <span className="resourceHeader">Total Plant:</span>
-            </div>
-            <div id="energy" className="resourceArea">
-              <span className="resourceHeader">Energy Production:</span>
-              <br></br>
-              <span className="resourceHeader">Total Energy:</span>
-            </div>
-            <div id="heat" className="resourceArea">
-            <span className="resourceHeader">Heat Production:</span>
-              <br></br>
-              <span className="resourceHeader">Total Heat:</span>
-            </div>
+            {this.renderResources(this.state.resources)}
           </div>
         </div>
       </div>

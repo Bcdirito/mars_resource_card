@@ -15,7 +15,7 @@ const initialState = {
         "amount": 0,
         "production": 0
     },
-    "electricity": {
+    "energy": {
         "amount": 0,
         "production": 0
     },
