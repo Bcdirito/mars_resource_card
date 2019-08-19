@@ -33,15 +33,29 @@ class ResourceCard extends Component {
     console.log(resources)
   }
 
+
+  inverseHover = e => {
+    e.target.className = "inverseButtonArea"
+  }
+
+  originalHover = e => {
+    e.target.className = "buttonArea"
+  }
+
   renderResources = (resources) => {
     let resourceSpaces = Object.keys(resources).map(key => {
       let resourceObj = this.state.resources[key]
       let resourceName = `${key[0].toUpperCase()}${key.slice(1)}`
       return (
-        <div id={key} className="resourceArea">
+        <div key={key} id={key} className="resourceArea">
           <span className="resourceHeader">{resourceName} Production: {resourceObj["production"]}</span>
           <br/>
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
+          <div className="buttonArea">
+          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)}>Update Production</button>
+          <br></br>
+          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)}>Update Total</button>
+          </div>
         </div>
       )
     })

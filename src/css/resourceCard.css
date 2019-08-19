@@ -2,14 +2,14 @@
     background-color: rgba(255, 255, 255, .75);
     margin-top: 1.5%;
     border-style: outset;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 95vh;
 }
 
 .resources {
     margin:auto;
     margin-left: 8%;
-    height: 90%;
+    height: 15vh;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-template-rows: 285% 285%
@@ -50,4 +50,17 @@
 
 #heat {
     background-image: url(../media/resource_photos/mars_heat.jpg)
+}
+
+.buttonArea {
+    margin: auto;
+}
+
+.buttonArea button {
+    width: 50%;
+}
+
+.inverseButtonArea {
+    color: rgba(255, 255, 255, .75);
+    background-color: black;
 }
