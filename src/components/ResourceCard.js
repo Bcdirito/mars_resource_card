@@ -3,8 +3,6 @@ import {connect} from "react-redux"
 import {changeProduction, changeResources} from "../store/actions/resourceActions"
 import "../css/resourceCard.css"
 
-
-
 class ResourceCard extends Component {
   state = {
     username: this.props.player.playerName,
@@ -33,6 +31,14 @@ class ResourceCard extends Component {
     console.log(resources)
   }
 
+  changeProduction = (e) => {
+    console.log(e.target.parentElement.parentElement.id)
+  }
+
+  changeResources = (e) => {
+    console.log(e.target.parentElement.parentElement.id)
+  }
+
 
   inverseHover = e => {
     e.target.className = "inverseButtonArea"
@@ -40,6 +46,18 @@ class ResourceCard extends Component {
 
   originalHover = e => {
     e.target.className = "buttonArea"
+  }
+
+  endCurrentGame = () => {
+    let answer = window.confirm("Would you like to end this game?")
+    if (answer === true) this.logoutUser()
+    else alert(`Keep Terraforming ${this.state.username}`)
+  }
+
+  logoutUser = () => {
+    alert(`Thank you for all that you've done ${this.state.username}`)
+      this.props.logout()
+      this.props.history.replace("/")
   }
 
   renderResources = (resources) => {
@@ -52,9 +70,9 @@ class ResourceCard extends Component {
           <br/>
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
           <div className="buttonArea">
-          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)}>Update Production</button>
+          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)} onClick={e => this.changeProduction(e)}>Update Production</button>
           <br></br>
-          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)}>Update Total</button>
+          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)} onClick={e => this.changeResources(e)}>Update Total</button>
           </div>
         </div>
       )
@@ -71,6 +89,8 @@ class ResourceCard extends Component {
           <h2>{this.state.username}'s Card</h2>
           <div className="resources">
             {this.renderResources(this.state.resources)}
+            <button className="generation">New Generation</button>
+            <button className="quit" onClick={() => this.endCurrentGame()}>End Game</button>
           </div>
         </div>
       </div>
@@ -90,7 +110,8 @@ const mapDispatchToProps = (dispatch) => {
     changeProduction: (resource, amt) => dispatch(changeProduction(resource, amt)),
     changeResources: (resource, amt) => dispatch(changeResources(resource, amt)),
     reloadPlayer: (player) => dispatch({type: "MAINTAIN_PLAYER", player}),
-    reloadProduction: (player) => dispatch({type: "MAINTAIN_PRODUCTION", player})
+    reloadProduction: (player) => dispatch({type: "MAINTAIN_PRODUCTION", player}),
+    logout: () => dispatch({type: "LOGOUT_PLAYER"})
   }
 }
 
