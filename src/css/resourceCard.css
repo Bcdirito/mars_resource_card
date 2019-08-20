@@ -60,7 +60,7 @@
     width: 50%;
 }
 
-.inverseButtonArea {
+.buttonArea button:hover {
     color: rgba(255, 255, 255, .75);
     background-color: black;
 }

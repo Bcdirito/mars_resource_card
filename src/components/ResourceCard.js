@@ -39,15 +39,6 @@ class ResourceCard extends Component {
     console.log(e.target.parentElement.parentElement.id)
   }
 
-
-  inverseHover = e => {
-    e.target.className = "inverseButtonArea"
-  }
-
-  originalHover = e => {
-    e.target.className = "buttonArea"
-  }
-
   endCurrentGame = () => {
     let answer = window.confirm("Would you like to end this game?")
     if (answer === true) this.logoutUser()
@@ -70,9 +61,9 @@ class ResourceCard extends Component {
           <br/>
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
           <div className="buttonArea">
-          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)} onClick={e => this.changeProduction(e)}>Update Production</button>
+          <button onClick={e => this.changeProduction(e)}>&#8593;</button>
           <br></br>
-          <button onMouseEnter={e => this.inverseHover(e)} onMouseLeave={e => this.originalHover(e)} onClick={e => this.changeResources(e)}>Update Total</button>
+          <button onClick={e => this.changeResources(e)}>Update Total</button>
           </div>
         </div>
       )
