@@ -7,7 +7,7 @@ class ResourceCard extends Component {
   state = {
     username: this.props.player.playerName,
     color: `${this.props.player.color}Player`,
-    resources: this.props.resources
+    resources: this.props.resources,
   }
 
   componentDidMount = () => {
@@ -24,15 +24,22 @@ class ResourceCard extends Component {
       })
     }
 
-    this.updateResources(this.props.resources)
+    for (const key in this.props.resources){
+      if (this.props.resources[key] !== this.state.resources[key]) this.updateResources(this.props.resources)
+    }
   }
 
   updateResources = (resources) => {
-    console.log(resources)
+    this.setState({
+      ...this.state,
+      resources: this.props.resources
+    })
   }
 
   changeProduction = (e) => {
-    console.log(e.target.parentElement.parentElement.id)
+    let resource = e.target.parentElement.attributes[1].value
+    if (e.target.name === "incProd") this.props.changeProduction(resource, 1)
+    else this.props.changeProduction(resource, -1)
   }
 
   changeResources = (e) => {
@@ -57,13 +64,19 @@ class ResourceCard extends Component {
       let resourceName = `${key[0].toUpperCase()}${key.slice(1)}`
       return (
         <div key={key} id={key} className="resourceArea">
+          <div className="production">
           <span className="resourceHeader">{resourceName} Production: {resourceObj["production"]}</span>
-          <br/>
+          <div className="changeButtons" name={key}>
+            <button name="decProd" onClick={e => this.changeProduction(e)}>&darr;</button>
+            <button name="incProd" onClick={e => this.changeProduction(e)}>&uarr;</button>
+          </div>
+          </div>
+          <div className="amount">
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
-          <div className="buttonArea">
-          <button onClick={e => this.changeProduction(e)}>&#8593;</button>
-          <br></br>
-          <button onClick={e => this.changeResources(e)}>Update Total</button>
+          <div className="changeButtons">
+            <button name="decTot">&darr;</button>
+            <button name="incTot">&uarr;</button>
+          </div>
           </div>
         </div>
       )

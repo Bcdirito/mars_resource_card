@@ -37,14 +37,6 @@ class PlayerCreation extends Component {
         this.props.history.replace("/card")
     }
 
-    enterButtonArea = e => {
-        e.target.className = "hoverSubmit"
-    }
-
-    exitButtonArea = e => {
-        e.target.className = "submit"
-    }
-
     render() {
         return (
         <div className="playerCreation">
@@ -65,7 +57,7 @@ class PlayerCreation extends Component {
                     <option value="black">Black</option>
                 </select>
                 <br/>
-                <button type="submit" className="submit" onMouseEnter={e => this.enterButtonArea(e)} onMouseLeave={e => this.exitButtonArea(e)}>Create Player</button>
+                <button type="submit" className="submit">Create Player</button>
             </form>
         </div>
         )

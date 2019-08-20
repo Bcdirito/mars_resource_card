@@ -9,7 +9,7 @@
 .resources {
     margin:auto;
     margin-left: 8%;
-    height: 14vh;
+    height: 13.5vh;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-template-rows: 285% 285%
@@ -26,6 +26,10 @@
 
 .resourceHeader {
     background-color: whitesmoke;
+    opacity: .9;
+    border-style: ridge;
+    border-color: black;
+    padding: 2%;
 }
 
 #credits {
@@ -52,15 +56,30 @@
     background-image: url(../media/resource_photos/mars_heat.jpg)
 }
 
-.buttonArea {
+.changeButtons {
     margin: auto;
+    margin-top: 2%;
 }
 
-.buttonArea button {
+.changeButtons button {
     width: 50%;
 }
 
-.buttonArea button:hover {
+.changeButtons button:hover {
     color: rgba(255, 255, 255, .75);
     background-color: black;
+}
+
+.production {
+    margin: auto;
+    margin-top: 13%;
+}
+
+.amount {
+    margin: auto;
+    margin-top: 6%;
+}
+
+.production, .amount {
+    width: 55%;
 }

@@ -22,20 +22,22 @@ const initialState = {
     "heat": {
         "amount": 0,
         "production": 0
-    }
+    },
 }
 
 const resourceReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CHANGE_PRODUCTION":
             return {
+                ...state,
                 [action.resource]:{
-                    ...this.state,
-                    "production": (this.state.amount + action.amt)
+                    ...state[action.resource],
+                    "production": state[action.resource]["production"] + action.amt
                 }
             }
         
         case "CHANGE_RESOURCES":
+            debugger
             return {
                 [action.resource]:{
                     ...this.state,

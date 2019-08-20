@@ -49,7 +49,7 @@
     font-size: 18px;
 }
 
-.playerCreation .hoverSubmit {
+.playerCreation .submit:hover {
     height: 35px;
     margin-top: 2%;
     margin-bottom: 2%;
