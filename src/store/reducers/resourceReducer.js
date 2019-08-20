@@ -1,7 +1,7 @@
 const initialState = {
     "credits": {
-        "amount": 0,
-        "production": 20
+        "amount": 20,
+        "production": 0
     },
     "steel": {
         "amount": 0,
@@ -28,13 +28,15 @@ const initialState = {
 const resourceReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CHANGE_PRODUCTION":
-            return {
+            let newState = {
                 ...state,
                 [action.resource]:{
                     ...state[action.resource],
                     "production": state[action.resource]["production"] + action.amt
                 }
             }
+            localStorage.setItem("resources", JSON.stringify(newState))
+            return newState
         
         case "CHANGE_RESOURCES":
             debugger
@@ -44,6 +46,19 @@ const resourceReducer = (state = initialState, action) => {
                     "amount": (this.state.amount + action.amt)
                 }
             }
+
+        case "MAINTAIN_RESOURCES":
+            debugger
+            return JSON.parse(action.resources)
+
+        case "RESET_RESOURCES":
+            localStorage.setItem("resources", JSON.stringify(initialState))
+            return state
+            
+
+        case "CLEAR_RESOURCES":
+            localStorage.clear()
+            return initialState
 
         default:
             return state

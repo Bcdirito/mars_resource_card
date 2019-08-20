@@ -6,7 +6,7 @@ import "../css/playerCreation.css"
 class PlayerCreation extends Component {
     state = {
         username: "",
-        color: "",
+        color: "red",
         formName: "redPlayer"
     }
 
@@ -33,8 +33,13 @@ class PlayerCreation extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.createPlayer(e.target.username.value, e.target.color.value)
-        this.props.history.replace("/card")
+        if (this.state.color !== "" && this.state.username !== ""){
+            this.props.createPlayer(e.target.username.value, e.target.color.value)
+            this.props.resetResources()
+            this.props.history.replace("/card")
+        } else {
+            alert("Please enter your name")
+        }
     }
 
     render() {
@@ -66,7 +71,8 @@ class PlayerCreation extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color))
+        createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color)),
+        resetResources: () => dispatch({type: "RESET_RESOURCES"})
     }
 }
 

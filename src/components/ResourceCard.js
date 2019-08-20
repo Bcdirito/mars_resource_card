@@ -13,10 +13,12 @@ class ResourceCard extends Component {
   componentDidMount = () => {
     if (this.state.username === "" && localStorage.player){
       this.props.reloadPlayer(localStorage)
+      this.props.reloadResources(localStorage.resources)
     }
   }
 
   componentDidUpdate = (prevProps, prevState) => {
+    
     if(prevState.username !== this.props.player.playerName){
       this.setState({
         username: this.props.player.playerName,
@@ -32,14 +34,28 @@ class ResourceCard extends Component {
   updateResources = (resources) => {
     this.setState({
       ...this.state,
-      resources: this.props.resources
+      resources: resources
     })
   }
 
   changeProduction = (e) => {
     let resource = e.target.parentElement.attributes[1].value
     if (e.target.name === "incProd") this.props.changeProduction(resource, 1)
-    else this.props.changeProduction(resource, -1)
+    else {
+      if (resource !== "credits") this.decreasingResourceChecker(resource)
+      else this.decreasingCreditsChecker(resource)
+    }
+  }
+
+  decreasingResourceChecker = (resource) => {
+    if (this.state.resources[resource]["production"] - 1 >= 0)
+    this.props.changeProduction(resource, -1)
+    else alert(`Can't decrease ${resource} production any further`)
+  }
+
+  decreasingCreditsChecker = (resource) => {
+    if (this.state.resources[resource]["production"] - 1 >= -5) this.props.changeProduction(resource, -1)
+    else alert(`Can't decrease ${resource} production any further`)
   }
 
   changeResources = (e) => {
@@ -55,6 +71,7 @@ class ResourceCard extends Component {
   logoutUser = () => {
     alert(`Thank you for all that you've done ${this.state.username}`)
       this.props.logout()
+      this.props.clearResources()
       this.props.history.replace("/")
   }
 
@@ -114,8 +131,9 @@ const mapDispatchToProps = (dispatch) => {
     changeProduction: (resource, amt) => dispatch(changeProduction(resource, amt)),
     changeResources: (resource, amt) => dispatch(changeResources(resource, amt)),
     reloadPlayer: (player) => dispatch({type: "MAINTAIN_PLAYER", player}),
-    reloadProduction: (player) => dispatch({type: "MAINTAIN_PRODUCTION", player}),
-    logout: () => dispatch({type: "LOGOUT_PLAYER"})
+    reloadResources: (resources) => dispatch({type: "MAINTAIN_RESOURCES", resources}),
+    logout: () => dispatch({type: "LOGOUT_PLAYER"}),
+    clearResources: () => dispatch({type: "CLEAR_RESOURCES"})
   }
 }
 
