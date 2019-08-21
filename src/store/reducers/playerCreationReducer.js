@@ -1,6 +1,7 @@
 const initialState = {
     playerName: "",
-    color: ""
+    color: "",
+    terraRating: 20
 }
 
 const playerReducer = (state = initialState, action) => {
@@ -8,15 +9,18 @@ const playerReducer = (state = initialState, action) => {
         case "CREATE_PLAYER":
             localStorage.setItem("player", action.name)
             localStorage.setItem("color", action.color)
+            localStorage.setItem("terraRating", JSON.stringify(20))
             return {
                 playerName: action.name,
-                color: action.color
+                color: action.color,
+                terraRating: 20
             }
         
         case "MAINTAIN_PLAYER":
             return {
                 playerName: action.player.player,
-                color: action.player.color
+                color: action.player.color,
+                terraRating: action.player.terraRating
             }
         
         case "LOGOUT_PLAYER":

@@ -39,7 +39,6 @@ const resourceReducer = (state = initialState, action) => {
             return newState
         
         case "CHANGE_RESOURCES":
-            debugger
             return {
                 [action.resource]:{
                     ...this.state,

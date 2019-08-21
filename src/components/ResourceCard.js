@@ -7,6 +7,7 @@ class ResourceCard extends Component {
   state = {
     username: this.props.player.playerName,
     color: `${this.props.player.color}Player`,
+    terraRating: this.props.player.terraRating,
     resources: this.props.resources,
   }
 
@@ -68,6 +69,11 @@ class ResourceCard extends Component {
     else alert(`Keep Terraforming ${this.state.username}`)
   }
 
+  endGeneration = () => {
+    let answer = window.confirm("Has the generation ended?")
+    if (answer === true) this.props.generateResources()
+  }
+
   logoutUser = () => {
     alert(`Thank you for all that you've done ${this.state.username}`)
       this.props.logout()
@@ -108,9 +114,10 @@ class ResourceCard extends Component {
       <div id="resourceCard" className={this.state.color}>
         <div>
           <h2>{this.state.username}'s Card</h2>
+          <span className={this.state.color} id="terraRating">Terraform Rating: {this.state.terraRating}</span>
           <div className="resources">
             {this.renderResources(this.state.resources)}
-            <button className="generation">New Generation</button>
+            <button className="generation" onClick={() => this.endGeneration()}>New Generation</button>
             <button className="quit" onClick={() => this.endCurrentGame()}>End Game</button>
           </div>
         </div>
