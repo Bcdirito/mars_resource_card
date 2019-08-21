@@ -23,6 +23,13 @@ const playerReducer = (state = initialState, action) => {
                 terraRating: action.player.terraRating
             }
         
+        case "CHANGE_TERRAFORM":
+            let newRating = Number(state.terraRating) + action.amt
+            localStorage.setItem("terraRating", JSON.stringify(newRating))
+            return {
+                ...state,
+                terraRating: newRating
+            }
         case "LOGOUT_PLAYER":
             localStorage.clear()
             return {

@@ -47,7 +47,6 @@ const resourceReducer = (state = initialState, action) => {
             }
 
         case "MAINTAIN_RESOURCES":
-            debugger
             return JSON.parse(action.resources)
 
         case "RESET_RESOURCES":

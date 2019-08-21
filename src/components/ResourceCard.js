@@ -27,6 +27,13 @@ class ResourceCard extends Component {
       })
     }
 
+    if (prevState.terraRating !== this.props.player.terraRating){
+      this.setState({
+        ...this.state,
+        terraRating: this.props.player.terraRating
+      })
+    }
+
     for (const key in this.props.resources){
       if (this.props.resources[key] !== this.state.resources[key]) this.updateResources(this.props.resources)
     }
@@ -61,6 +68,11 @@ class ResourceCard extends Component {
 
   changeResources = (e) => {
     console.log(e.target.parentElement.parentElement.id)
+  }
+
+  changeTerraform = (e) => {
+    if (e.target.name === "incTerr") this.props.changeTerraform(1)
+    else this.props.changeTerraform(-1)
   }
 
   endCurrentGame = () => {
@@ -115,6 +127,10 @@ class ResourceCard extends Component {
         <div>
           <h2>{this.state.username}'s Card</h2>
           <span className={this.state.color} id="terraRating">Terraform Rating: {this.state.terraRating}</span>
+          <div className="terraRatingButton">
+            <button name="incTerr" onClick={(e) => this.changeTerraform(e)}>&uarr;</button>
+            <button name="decTerr" onClick={(e) => this.changeTerraform(e)}>&darr;</button>
+          </div>
           <div className="resources">
             {this.renderResources(this.state.resources)}
             <button className="generation" onClick={() => this.endGeneration()}>New Generation</button>
@@ -129,7 +145,7 @@ class ResourceCard extends Component {
 const mapStateToProps = (state) => {
   return {
     player: state.player,
-    resources: state.resources
+    resources: state.resources,
   }
 }
 
@@ -137,6 +153,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeProduction: (resource, amt) => dispatch(changeProduction(resource, amt)),
     changeResources: (resource, amt) => dispatch(changeResources(resource, amt)),
+    changeTerraform: (amt) => dispatch({type: "CHANGE_TERRAFORM", amt}),
     reloadPlayer: (player) => dispatch({type: "MAINTAIN_PLAYER", player}),
     reloadResources: (resources) => dispatch({type: "MAINTAIN_RESOURCES", resources}),
     logout: () => dispatch({type: "LOGOUT_PLAYER"}),
