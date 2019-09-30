@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
-import {changeProduction, changeResources} from "../store/actions/resourceActions"
+import {changeProduction, changeResources, generateResources} from "../store/actions/resourceActions"
 import "../css/resourceCard.css"
 
 class ResourceCard extends Component {
@@ -83,7 +83,8 @@ class ResourceCard extends Component {
 
   endGeneration = () => {
     let answer = window.confirm("Has the generation ended?")
-    if (answer === true) this.props.generateResources()
+    console.log(this.state.resources)
+    if (answer === true) this.props.generateResources(this.state.resources, this.state.terraRating)
   }
 
   logoutUser = () => {
@@ -154,6 +155,7 @@ const mapDispatchToProps = (dispatch) => {
     changeProduction: (resource, amt) => dispatch(changeProduction(resource, amt)),
     changeResources: (resource, amt) => dispatch(changeResources(resource, amt)),
     changeTerraform: (amt) => dispatch({type: "CHANGE_TERRAFORM", amt}),
+    generateResources: (resources, rating) => dispatch(generateResources(resources, rating)),
     reloadPlayer: (player) => dispatch({type: "MAINTAIN_PLAYER", player}),
     reloadResources: (resources) => dispatch({type: "MAINTAIN_RESOURCES", resources}),
     logout: () => dispatch({type: "LOGOUT_PLAYER"}),
