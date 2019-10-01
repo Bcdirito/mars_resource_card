@@ -1,8 +1,11 @@
 .continueGame {
     width: 66%;
     margin: auto;
-    margin-top: 50%;
+    margin-top: 41%;
+    margin-bottom: 0%;
     padding: 1%;
+    display: grid;
+
 }
 
 a {
@@ -14,7 +17,25 @@ a:hover {
     text-decoration: none;
 }
 
-.continueGame h2:hover{
-    background-color: rgb(0, 0, 0);
+
+.gameButton {
+    width: 20%;
+    padding: 1%;
+    margin-bottom: 1%;
+    border: outset black 2px;
+}
+
+.gameButton:hover {
     color: rgba(255, 255, 255, 1);
 }
+
+#continueGameButton:hover {
+    border-color: rgb(51, 138, 211);
+    background-color: rgba(51, 138, 211, .5)
+}
+
+#newGame:hover {
+    border: outset rgb(80, 163, 89) 2px;
+    background-color: rgba(80, 163, 89, .5)
+}
+

@@ -23,6 +23,7 @@ class App extends Component {
           <Route exact path="/create-player" render={(props) => (
             <PlayerCreation {...props} />
           )}/>
+          <Route component={Home}/>
         </Switch>
       </div>
     );

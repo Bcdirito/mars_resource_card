@@ -1,7 +1,8 @@
 .welcomeText {
     width: 66%;
     margin: auto;
-    margin-top: 50%;
+    margin-top: 51%;
+    margin-bottom: 0%;
     animation: fadein 1.5s;
 }
 
