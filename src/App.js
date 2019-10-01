@@ -4,6 +4,8 @@ import './App.css';
 import Home from "./components/Home"
 import ResourceCard from "./components/ResourceCard"
 import PlayerCreation from "./components/PlayerCreationComponent"
+import ContinueGame from "./components/ContinueGame"
+
 class App extends Component {
   render() {
     return (
@@ -11,6 +13,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={(props) => (
             <Home {...props}/>
+          )}/>
+          <Route exact path="/continue-game" render={(props) => (
+            <ContinueGame {...props} />
           )}/>
           <Route exact path="/card" render={(props) => (
             <ResourceCard {...props} />
