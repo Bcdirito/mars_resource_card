@@ -1,25 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Link} from "react-router-dom"
 import "../css/home.css"
 
-export default class Home extends Component {
+const Home = (props) => (
+    <div className="welcomeText">
+        <h1>
+            Welcome to your Terraforming Mars Resource Card
+        </h1>
+        <Link to={localStorage["color"] ? "/continue-game" : "/create-player"} className="enterLink"><h2>Enter</h2></Link>
+    </div>
+)
 
-    inverseHover = (e) => {
-        e.target.className = "linkHover"
-    }
-    
-    originalHover = (e) => {
-        e.target.className = ""
-    }
-
-    render() {
-        return (
-        <div className="welcomeText">
-            <h1>
-              Welcome to your Terraforming Mars Resource Card
-            </h1>
-            <Link to={localStorage["color"] ? "/continue-game" : "/create-player"} className="enterLink"><h2>Enter</h2></Link>
-        </div>
-        )
-    }
-}
+export default Home
