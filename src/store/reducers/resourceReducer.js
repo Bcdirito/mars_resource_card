@@ -50,13 +50,8 @@ const resourceReducer = (state = initialState, action) => {
             return JSON.parse(action.resources)
 
         case "GENERATE_RESOURCES":
-            for (const key in state){
-                if (key === "credits") state[key]["amount"] += (state[key]["production"] + Number(action.rating))
-                else state[key]["amount"] += state[key]["production"]
-            }
-
-            localStorage.setItem("resources", JSON.stringify(state))
-            return state
+            localStorage.setItem("resources", JSON.stringify(action.resources))
+            return action.resources
 
         case "RESET_RESOURCES":
             localStorage.setItem("resources", JSON.stringify(initialState))

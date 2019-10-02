@@ -6,28 +6,24 @@ import ResourceCard from "./components/ResourceCard"
 import PlayerCreation from "./components/PlayerCreationComponent"
 import ContinueGame from "./components/ContinueGame"
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Switch>
-          <Route exact path="/" render={(props) => (
-            <Home {...props}/>
-          )}/>
-          <Route exact path="/continue-game" render={(props) => (
-            <ContinueGame {...props} />
-          )}/>
-          <Route exact path="/card" render={(props) => (
-            <ResourceCard {...props} />
-          )}/>
-          <Route exact path="/create-player" render={(props) => (
-            <PlayerCreation {...props} />
-          )}/>
-          <Route component={Home}/>
-        </Switch>
-      </div>
-    );
-  }
-}
+const App = (props) => (
+  <div className="App">
+    <Switch>
+      <Route exact path="/" render={(props) => (
+        <Home {...props}/>
+      )}/>
+      <Route exact path="/continue-game" render={(props) => (
+        <ContinueGame {...props} />
+      )}/>
+      <Route exact path="/card" render={(props) => (
+        <ResourceCard {...props} />
+      )}/>
+      <Route exact path="/create-player" render={(props) => (
+        <PlayerCreation {...props} />
+      )}/>
+      <Route component={Home}/>
+    </Switch>
+  </div>
+);
 
 export default App;

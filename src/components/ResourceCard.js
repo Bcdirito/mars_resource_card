@@ -19,7 +19,6 @@ class ResourceCard extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    
     if(prevState.username !== this.props.player.playerName){
       this.setState({
         username: this.props.player.playerName,
@@ -35,7 +34,7 @@ class ResourceCard extends Component {
     }
 
     for (const key in this.props.resources){
-      if (this.props.resources[key] !== this.state.resources[key]) this.updateResources(this.props.resources)
+      if (this.props.resources[key] !== this.state.resources[key]) {this.updateResources(this.props.resources)}
     }
   }
 
@@ -83,8 +82,26 @@ class ResourceCard extends Component {
 
   endGeneration = () => {
     let answer = window.confirm("Has the generation ended?")
-    console.log(this.state.resources)
-    if (answer === true) this.props.generateResources(this.state.resources, this.state.terraRating)
+    if (answer === true) {
+      this.newGeneration(this.state.resources, this.state.terraRating)
+    }
+  }
+
+  newGeneration = (resources, terraRating) => {
+    let newGeneration = Object.assign(resources)
+    
+    for (const key in newGeneration){
+      if (key === "credits") {
+        newGeneration[key]["amount"] += (Number(terraRating) + newGeneration[key]["production"])}
+      else if (key === "energy") {
+        newGeneration["heat"]["amount"] += newGeneration[key]["amount"]
+        newGeneration[key]["amount"] = newGeneration[key]["production"]
+      }
+      else newGeneration[key]["amount"] += newGeneration[key]["production"]
+    }
+
+    this.updateResources(newGeneration)
+    this.props.generateResources(newGeneration, this.state.terraRating)
   }
 
   logoutUser = () => {
