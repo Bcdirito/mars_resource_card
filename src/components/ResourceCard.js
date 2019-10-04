@@ -106,9 +106,7 @@ class ResourceCard extends Component {
 
   logoutUser = () => {
     alert(`Thank you for all that you've done ${this.state.username}`)
-      this.props.logout()
-      this.props.clearResources()
-      this.props.history.replace("/")
+    this.props.history.replace("/endgame")
   }
 
   renderResources = (resources) => {
