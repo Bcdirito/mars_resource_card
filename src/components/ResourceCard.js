@@ -172,9 +172,7 @@ const mapDispatchToProps = (dispatch) => {
     changeTerraform: (amt) => dispatch({type: "CHANGE_TERRAFORM", amt}),
     generateResources: (resources, rating) => dispatch(generateResources(resources, rating)),
     reloadPlayer: (player) => dispatch({type: "MAINTAIN_PLAYER", player}),
-    reloadResources: (resources) => dispatch({type: "MAINTAIN_RESOURCES", resources}),
-    logout: () => dispatch({type: "LOGOUT_PLAYER"}),
-    clearResources: () => dispatch({type: "CLEAR_RESOURCES"})
+    reloadResources: (resources) => dispatch({type: "MAINTAIN_RESOURCES", resources})
   }
 }
 

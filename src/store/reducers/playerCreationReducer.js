@@ -29,7 +29,8 @@ const playerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 terraRating: newRating
-            }
+        }
+        
         case "LOGOUT_PLAYER":
             localStorage.clear()
             return {

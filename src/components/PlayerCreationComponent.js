@@ -10,6 +10,10 @@ class PlayerCreation extends Component {
         formName: "redPlayer"
     }
 
+    componentDidMount = () => {
+        this.props.logout()
+    }
+
     handleChange = e => {
         if (e.target.name === "color") this.colorChange(e)
         else this.nameChange(e)
@@ -72,7 +76,7 @@ class PlayerCreation extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color)),
-        resetResources: () => dispatch({type: "RESET_RESOURCES"})
+        logout: () => dispatch({type: "LOGOUT_PLAYER"})
     }
 }
 
