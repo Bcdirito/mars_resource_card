@@ -19,7 +19,6 @@ class ResourceCard extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    console.log(this.props)
     if(prevState.username !== this.props.player.playerName){
       this.setState({
         username: this.props.player.playerName,
@@ -70,7 +69,7 @@ class ResourceCard extends Component {
     let resource = e.target.parentElement.attributes.name.value
     if (e.target.name === "incTot") this.props.changeResources(resource, 1)
     else {
-      if (this.state["resources"][resource]["production"] - 1 >= 0) this.props.changeResources(resource, -1)
+      if (this.state["resources"][resource]["amount"] - 1 >= 0) this.props.changeResources(resource, -1)
       else alert(`You have no ${resource} to use!`)
     }
   }
