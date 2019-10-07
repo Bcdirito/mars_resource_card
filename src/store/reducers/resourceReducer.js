@@ -39,12 +39,17 @@ const resourceReducer = (state = initialState, action) => {
             return newState
         
         case "CHANGE_RESOURCES":
-            return {
+            let newAmountState = {
+                ...state,
                 [action.resource]:{
-                    ...this.state,
-                    "amount": (this.state.amount + action.amt)
+                    ...state[action.resource],
+                    "amount": (state[action.resource]["amount"] + action.amt)
                 }
             }
+
+            debugger
+            localStorage.setItem("resources", JSON.stringify(newAmountState))
+            return newAmountState
 
         case "MAINTAIN_RESOURCES":
             return JSON.parse(action.resources)

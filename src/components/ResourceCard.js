@@ -19,6 +19,7 @@ class ResourceCard extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
+    console.log(this.props)
     if(prevState.username !== this.props.player.playerName){
       this.setState({
         username: this.props.player.playerName,
@@ -66,7 +67,12 @@ class ResourceCard extends Component {
   }
 
   changeResources = (e) => {
-    console.log(e.target.parentElement.parentElement.id)
+    let resource = e.target.parentElement.attributes.name.value
+    if (e.target.name === "incTot") this.props.changeResources(resource, 1)
+    else {
+      if (this.state["resources"][resource]["production"] - 1 >= 0) this.props.changeResources(resource, -1)
+      else alert(`You have no ${resource} to use!`)
+    }
   }
 
   changeTerraform = (e) => {
@@ -124,9 +130,9 @@ class ResourceCard extends Component {
           </div>
           <div className="amount">
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
-          <div className="changeButtons">
-            <button name="decTot">&darr;</button>
-            <button name="incTot">&uarr;</button>
+          <div className="changeButtons" name={key}>
+            <button name="decTot" onClick={e => this.changeResources(e)}>&darr;</button>
+            <button name="incTot" onClick={e => this.changeResources(e)}>&uarr;</button>
           </div>
           </div>
         </div>
