@@ -9,6 +9,10 @@ class ResourceCard extends Component {
     color: `${this.props.player.color}Player`,
     terraRating: this.props.player.terraRating,
     resources: this.props.resources,
+    totalField: {
+      resource: "",
+      direction: ""
+    }
   }
 
   componentDidMount = () => {
@@ -66,6 +70,8 @@ class ResourceCard extends Component {
   }
 
   changeResources = (e) => {
+    console.log("made it here")
+    debugger
     let resource = e.target.parentElement.attributes.name.value
     if (e.target.name === "incTot") this.props.changeResources(resource, 1)
     else {
@@ -130,10 +136,11 @@ class ResourceCard extends Component {
           <div className="amount">
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
           <div className="changeButtons" name={key}>
-            <button name="decTot" onClick={e => this.changeResources(e)}>&darr;</button>
-            <button name="incTot" onClick={e => this.changeResources(e)}>&uarr;</button>
+            <button name="decTot" onClick={(e) => this.displayForm(e, key)}>&darr;</button>
+            <button name="incTot" onClick={(e) => this.displayForm(e, key)}>&uarr;</button>
           </div>
           </div>
+          {this.state.totalField.resource === key ? this.renderForm(key) : null}
         </div>
       )
     })
@@ -141,6 +148,25 @@ class ResourceCard extends Component {
     return resourceSpaces
   }
 
+  displayForm = (e, resourceName) => {
+    this.setState({
+      ...this.state,
+      totalField: {
+        resource: resourceName,
+        direction: e.target.name === "incTot" ? "increase" : "decrease"
+      }
+    })
+  }
+
+  renderForm = () => {
+    return (
+      <form onSubmit={(e) => this.changeResources(e)}>
+        <input type="text"></input>
+        <br/>
+        <button>Update Total</button>
+      </form>
+    )
+  }
 
   render() {
     return (
