@@ -70,14 +70,26 @@ class ResourceCard extends Component {
   }
 
   changeResources = (e) => {
-    console.log("made it here")
-    debugger
-    let resource = e.target.parentElement.attributes.name.value
-    if (e.target.name === "incTot") this.props.changeResources(resource, 1)
+    e.preventDefault()
+    let resource = this.state.totalField.resource
+    let changeAmt = this.state.totalField.direction === "increase" ? Number(e.target.firstElementChild.value) : Number(e.target.firstElementChild.value) * -1
+    if (this.state.totalField.direction === "increase") this.props.changeResources(resource, changeAmt)
     else {
-      if (this.state["resources"][resource]["amount"] - 1 >= 0) this.props.changeResources(resource, -1)
-      else alert(`You have no ${resource} to use!`)
+      if (this.state["resources"][resource]["amount"] - 1 >= 0) this.props.changeResources(resource, changeAmt)
+      else alert(`You don't have enough ${resource} to use!`)
     }
+
+    this.resetTotalField()
+  }
+
+  resetTotalField = () => {
+    this.setState({
+      ...this.state,
+      totalField: {
+        resource: "",
+        direction: ""
+      }
+    })
   }
 
   changeTerraform = (e) => {

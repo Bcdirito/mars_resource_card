@@ -76,7 +76,8 @@ class PlayerCreation extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color)),
-        logout: () => dispatch({type: "LOGOUT_PLAYER"})
+        logout: () => dispatch({type: "LOGOUT_PLAYER"}),
+        resetResources: () => dispatch({type: "RESET_RESOURCES"})
     }
 }
 
