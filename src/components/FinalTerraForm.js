@@ -6,14 +6,12 @@ const FinalTerraform = (props, logout, clearResources) => {
     const generateFinalResources = () => {
         let resourceObj = JSON.parse(localStorage.resources)
         return Object.keys(resourceObj).map(key => {
-            return (<div>
-                <span className={localStorage.color}>Total {`${key[0].toUpperCase()}${key.slice(1)}`}: {resourceObj[key]["amount"]}</span>
+            return (<div className={localStorage.color + " resourceSpan"} key={key}>
+                Total {`${key[0].toUpperCase()}${key.slice(1)}`}: {resourceObj[key]["amount"]}
             </div>)
         })
         
     }
-
-    console.log(generateFinalResources())
     
     return(<div id="finalTerraformDiv" className={localStorage.color}>
         <h1>{localStorage.player}'s Final Terraform Score</h1>

@@ -1,9 +1,27 @@
 #finalTerraformDiv {
     margin: auto;
-    margin-top: 44%;
-    height: 25vh;
+    margin-top: 20%;
+    height: 50vh;
     padding: 1%;
     border-width: 2px;
+    border-style: outset;
+    overflow: auto;
+}
+
+.resourceTable {
+    margin: auto;
+    margin-top: 1%;
+}
+
+.resourceSpan {
+    margin: auto;
+    margin-top: 2%;
+    width: 10vw;
+    height: 5vh;
+    background-color: black;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
     border-style: outset;
 }
 
