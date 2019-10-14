@@ -10,7 +10,7 @@
     margin:auto;
     margin-left: 8%;
     margin-top: 1.5%;
-    height: 13.5vh;
+    height: 13vh;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-template-rows: 285% 285%
@@ -69,6 +69,7 @@
 button:hover {
     color: rgba(255, 255, 255, .75);
     background-color: black;
+    border-color: black;
 }
 
 .production {
@@ -103,10 +104,32 @@ button:hover {
 }
 
 .formButton {
-    /* padding: 1%; */
     height: 4vh;
     border: 2px black outset;
     background-color: rgba(255, 255, 255);
     color: black;
 }
 
+.underResourceButtons {
+    margin: auto;    
+    margin-left: 24.75vw;
+    margin-top: 5%;
+}
+
+.generation, .quit {
+    width: 12vw;
+    height: 5vh;
+    margin-bottom: 5%;
+    border-width: 2px;
+    border-style: outset;
+}
+
+.generation {
+    border-color: rgb(80, 163, 89);
+    background-color: rgba(80, 163, 89, .5)
+}
+
+.quit {
+    border-color: rgb(51, 138, 211);
+    background-color: rgba(51, 138, 211, .5)
+}

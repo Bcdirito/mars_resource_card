@@ -195,8 +195,10 @@ class ResourceCard extends Component {
           </div>
           <div className="resources">
             {this.renderResources(this.state.resources)}
-            <button className="generation" onClick={() => this.endGeneration()}>New Generation</button>
-            <button className="quit" onClick={() => this.endCurrentGame()}>End Game</button>
+            <div className="underResourceButtons">
+              <button className="generation" onClick={() => this.endGeneration()}>New Generation</button>
+              <button className="quit" onClick={() => this.endCurrentGame()}>End Game</button>
+            </div>
           </div>
         </div>
       </div>
