@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "../css/finalTerraform.css"
 
-const FinalTerraform = (props, logout, clearResources) => {
+const FinalTerraform = (props) => {
     const generateFinalResources = () => {
         let resourceObj = JSON.parse(localStorage.resources)
         return Object.keys(resourceObj).map(key => {

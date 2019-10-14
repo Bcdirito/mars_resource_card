@@ -51,7 +51,8 @@ const resourceReducer = (state = initialState, action) => {
             return newAmountState
 
         case "MAINTAIN_RESOURCES":
-            return JSON.parse(action.resources)
+            let resources = (action && action.resources ? JSON.parse(action.resources) : initialState)
+            return resources
 
         case "GENERATE_RESOURCES":
             localStorage.setItem("resources", JSON.stringify(action.resources))
@@ -59,7 +60,7 @@ const resourceReducer = (state = initialState, action) => {
 
         case "RESET_RESOURCES":
             localStorage.setItem("resources", JSON.stringify(initialState))
-            return state
+            return initialState
             
 
         case "CLEAR_RESOURCES":

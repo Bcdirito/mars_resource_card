@@ -12,6 +12,7 @@ class PlayerCreation extends Component {
 
     componentDidMount = () => {
         this.props.logout()
+        this.props.clearResources()
     }
 
     handleChange = e => {
@@ -39,7 +40,6 @@ class PlayerCreation extends Component {
         e.preventDefault()
         if (this.state.color !== "" && this.state.username !== ""){
             this.props.createPlayer(e.target.username.value, e.target.color.value)
-            this.props.resetResources()
             this.props.history.replace("/card")
         } else {
             alert("Please enter your name")
@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch => {
     return {
         createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color)),
         logout: () => dispatch({type: "LOGOUT_PLAYER"}),
-        resetResources: () => dispatch({type: "RESET_RESOURCES"})
+        clearResources: () => dispatch({type: "CLEAR_RESOURCES"})
     }
 }
 
