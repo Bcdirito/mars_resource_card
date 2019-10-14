@@ -178,7 +178,7 @@ class ResourceCard extends Component {
       <form onSubmit={(e) => this.changeResources(e)}>
         <input type="text"></input>
         <br/>
-        <button>Update Total</button>
+        <button className="formButton">Update Total</button>
       </form>
     )
   }

@@ -66,7 +66,7 @@
     width: 50%;
 }
 
-.changeButtons button:hover, .terraRatingButton button:hover, .quit:hover, .generation:hover {
+button:hover {
     color: rgba(255, 255, 255, .75);
     background-color: black;
 }
@@ -101,3 +101,12 @@
 .terraRatingButton button {
     width: 14.5%;
 }
+
+.formButton {
+    /* padding: 1%; */
+    height: 4vh;
+    border: 2px black outset;
+    background-color: rgba(255, 255, 255);
+    color: black;
+}
+
