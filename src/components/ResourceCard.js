@@ -111,16 +111,18 @@ class ResourceCard extends Component {
   }
 
   newGeneration = (resources, terraRating) => {
+    let newCardsAmt = Number(prompt("How many cards did you buy this turn?", "0")) * 3
     let newGeneration = Object.assign(resources)
     
     for (const key in newGeneration){
       if (key === "credits") {
-        newGeneration[key]["amount"] += (Number(terraRating) + newGeneration[key]["production"])}
-      else if (key === "energy") {
+        newGeneration[key]["amount"] += ((Number(terraRating) + newGeneration[key]["production"]) - newCardsAmt)
+      } else if (key === "energy") {
         newGeneration["heat"]["amount"] += newGeneration[key]["amount"]
         newGeneration[key]["amount"] = newGeneration[key]["production"]
+      } else {
+        newGeneration[key]["amount"] += newGeneration[key]["production"]
       }
-      else newGeneration[key]["amount"] += newGeneration[key]["production"]
     }
 
     this.updateResources(newGeneration)
