@@ -3,11 +3,25 @@ import { Link } from "react-router-dom"
 import "../css/finalTerraform.css"
 
 const FinalTerraform = (props, logout, clearResources) => {
+    const generateFinalResources = () => {
+        let resourceObj = JSON.parse(localStorage.resources)
+        return Object.keys(resourceObj).map(key => {
+            return (<div>
+                <span className={localStorage.color}>Total {`${key[0].toUpperCase()}${key.slice(1)}`}: {resourceObj[key]["amount"]}</span>
+            </div>)
+        })
+        
+    }
 
+    console.log(generateFinalResources())
+    
     return(<div id="finalTerraformDiv" className={localStorage.color}>
         <h1>{localStorage.player}'s Final Terraform Score</h1>
         <span className={localStorage.color} id="terraRating">Terraform Rating: {localStorage.terraRating}</span>
         <br></br>
+        <div className="resourceTable">
+            {generateFinalResources()}
+        </div>
         <Link to="/create-player"><button className="startOverButton">Start New Game</button></Link>
     </div>)
 }

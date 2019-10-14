@@ -129,6 +129,7 @@ class ResourceCard extends Component {
 
   logoutUser = () => {
     alert(`Thank you for all that you've done ${this.state.username}`)
+    this.newGeneration(this.state.resources, this.state.terraRating)
     this.props.history.replace("/endgame")
   }
 
