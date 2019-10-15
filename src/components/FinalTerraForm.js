@@ -9,8 +9,7 @@ const FinalTerraform = (props) => {
             return (<div className={localStorage.color + " resourceSpan"} key={key}>
                 Total {`${key[0].toUpperCase()}${key.slice(1)}`}: {resourceObj[key]["amount"]}
             </div>)
-        })
-        
+        })   
     }
     
     return(<div id="finalTerraformDiv" className={localStorage.color}>

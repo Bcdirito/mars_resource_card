@@ -4,7 +4,7 @@ import "../css/continueGame.css"
 
 const ContinueGame = (props) => (
     <div className="continueGame">
-        <h1>Continue Last Game?</h1>
+        <h1>Continue Last Game, {localStorage["player"]}?</h1>
         <Link to="/card"><button className="gameButton" id="continueGameButton">Continue</button></Link>
         <Link to="/create-player"><button className="gameButton" id="newGame">New Game</button></Link>
     </div>
