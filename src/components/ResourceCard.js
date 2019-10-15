@@ -106,12 +106,12 @@ class ResourceCard extends Component {
   endGeneration = () => {
     let answer = window.confirm("Has the generation ended?")
     if (answer === true) {
-      this.newGeneration(this.state.resources, this.state.terraRating)
+      this.newGeneration(this.state.resources, this.state.terraRating, true)
     }
   }
 
-  newGeneration = (resources, terraRating) => {
-    let newCardsAmt = Number(prompt("How many cards did you buy this turn?", "0")) * 3
+  newGeneration = (resources, terraRating, newCardsBool=false) => {
+    let newCardsAmt = newCardsBool === true ? Number(prompt("How many cards did you buy this turn?", "0")) * 3 : 0
     let newGeneration = Object.assign(resources)
     
     for (const key in newGeneration){
