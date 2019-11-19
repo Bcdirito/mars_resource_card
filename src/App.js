@@ -6,6 +6,7 @@ import ResourceCard from "./components/ResourceCard"
 import PlayerCreation from "./components/PlayerCreationComponent"
 import ContinueGame from "./components/ContinueGame"
 import FinalTerraform from './components/FinalTerraForm';
+import BetaAnnouncement from "./components/BetaAnnouncement"
 
 const App = (props) => (
   <div className="App">
@@ -23,6 +24,9 @@ const App = (props) => (
         <PlayerCreation {...props} />
       )}/>
       <Route exact path="/endgame" render={(props) => (<FinalTerraform {...props}/>
+      )}/>
+      <Route exact path="/beta" render={() => (
+        <BetaAnnouncement />
       )}/>
       <Route component={Home}/>
     </Switch>
