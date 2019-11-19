@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "mars-resource-card"
+    "default": "mars-resource-card",
+    "deployment": "mars-resource-card"
   }
 }
