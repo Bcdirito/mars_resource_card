@@ -8,9 +8,17 @@ body {
   background-image: url(./media/terraforming_mars_landing_background.jpg);
   /* background-position: center; */
   background-size: cover;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media only screen and (max-width: 823px) {
+  body {
+    background-image: url(./media/mobile_mars_background.jpg);
+  }
 }
