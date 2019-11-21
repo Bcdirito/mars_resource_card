@@ -1,8 +1,12 @@
 import React from "react"
+import "../css/orientationAlert.css"
 
 const OrientationAlert = () => {
     return (
-        <h1>Please Change Your Orientation to Landscape</h1>
+        <div className="alert">
+            <h2>Please Adjust to Landscape Orientation</h2>
+        </div>
+        
     )
 }
 

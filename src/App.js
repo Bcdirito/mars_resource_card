@@ -11,7 +11,7 @@ import OrientationAlert from "./components/OrientationAlert"
 
 const App = (props) => (
   <div className="App">
-    {window.innerWidth < 768 ? <OrientationAlert /> : <Switch>
+    {window.innerWidth < 568 ? <OrientationAlert /> : <Switch>
       <Route exact path="/" render={(props) => (
         <Home {...props}/>
       )}/>
