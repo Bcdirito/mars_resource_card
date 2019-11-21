@@ -7,10 +7,11 @@ import PlayerCreation from "./components/PlayerCreationComponent"
 import ContinueGame from "./components/ContinueGame"
 import FinalTerraform from './components/FinalTerraForm';
 import BetaAnnouncement from "./components/BetaAnnouncement"
+import OrientationAlert from "./components/OrientationAlert"
 
 const App = (props) => (
   <div className="App">
-    <Switch>
+    {window.innerWidth < 768 ? <OrientationAlert /> : <Switch>
       <Route exact path="/" render={(props) => (
         <Home {...props}/>
       )}/>
@@ -29,7 +30,7 @@ const App = (props) => (
         <BetaAnnouncement />
       )}/>
       <Route component={Home}/>
-    </Switch>
+    </Switch>}
   </div>
 );
 

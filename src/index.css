@@ -17,8 +17,10 @@ code {
     monospace;
 }
 
-@media only screen and (max-width: 823px) {
+@media only screen and (max-width: 767px) {
   body {
-    background-image: url(./media/mobile_mars_background.jpg);
+    background-color: black;
+    background-image: none;
+    max-height: 100vh;
   }
 }
