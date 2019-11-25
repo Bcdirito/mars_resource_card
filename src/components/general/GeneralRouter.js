@@ -5,7 +5,7 @@ import ResourceCard from "./ResourceCard"
 import PlayerCreation from "./PlayerCreationComponent"
 import ContinueGame from "./ContinueGame"
 import FinalTerraform from './FinalTerraForm';
-import BetaAnnouncement from "./BetaAnnouncement"
+import BetaAnnouncement from "../BetaAnnouncement"
 
 const GeneralRouter = () => {
     return (

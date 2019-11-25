@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom"
-import "../css/continueGame.css"
+import "../../css/continueGame.css"
 
 const ContinueGame = () => (
     <div className="continueGame">

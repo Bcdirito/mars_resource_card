@@ -5,22 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./media/terraforming_mars_landing_background.jpg);
-  /* background-position: center; */
+  background: url(./media/terraforming_mars_landing_background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  max-width: 100vw;
-  max-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-@media only screen and (max-width: 768px) {
-  body {
-    background-color: black;
-    background-image: none;
-    max-height: 100vh;
-  }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
-import {changeProduction, changeResources, generateResources} from "../store/actions/resourceActions"
-import "../css/resourceCard.css"
+import {changeProduction, changeResources, generateResources} from "../../store/actions/resourceActions"
+import "../../css/resourceCard.css"
 
 class ResourceCard extends Component {
   state = {

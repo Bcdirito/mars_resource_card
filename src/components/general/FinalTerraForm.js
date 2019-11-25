@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import "../css/finalTerraform.css"
+import "../../css/finalTerraform.css"
 
 const FinalTerraform = (props) => {
     const generateFinalResources = () => {

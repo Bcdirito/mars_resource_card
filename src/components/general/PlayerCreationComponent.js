@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
-import {createPlayer} from "../store/actions/playerCreationActions"
-import "../css/playerCreation.css"
+import {createPlayer} from "../../store/actions/playerCreationActions"
+import "../../css/playerCreation.css"
 
 class PlayerCreation extends Component {
     state = {
