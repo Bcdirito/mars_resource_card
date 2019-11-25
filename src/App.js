@@ -1,40 +1,23 @@
 import React from 'react';
-import {Switch, Route} from "react-router-dom"
 import './App.css';
-import Home from "./components/Home"
-import ResourceCard from "./components/ResourceCard"
-import PlayerCreation from "./components/PlayerCreationComponent"
-import ContinueGame from "./components/ContinueGame"
-import FinalTerraform from './components/FinalTerraForm';
-import BetaAnnouncement from "./components/BetaAnnouncement"
+// import Home from "./components/Home"
+// import ResourceCard from "./components/ResourceCard"
+// import PlayerCreation from "./components/PlayerCreationComponent"
+// import ContinueGame from "./components/ContinueGame"
+// import FinalTerraform from './components/FinalTerraForm';
+// import BetaAnnouncement from "./components/BetaAnnouncement"
 import MobileAlert from "./components/MobileAlert"
-
+import GeneralRouter from "./components/GeneralRouter"
 
 import mobileChecker from "./utils/mobileChecker"
 
 const App = (props) => {
+  
+  let device = mobileChecker(window.navigator)
+
   return (
     <div className="App">
-      {mobileChecker(window.navigator) === true ? <MobileAlert /> : <Switch>
-        <Route exact path="/" render={(props) => (
-          <Home {...props}/>
-        )}/>
-        <Route exact path="/continue-game" render={(props) => (
-          <ContinueGame {...props} />
-        )}/>
-        <Route exact path="/card" render={(props) => (
-          <ResourceCard {...props} />
-        )}/>
-        <Route exact path="/create-player" render={(props) => (
-          <PlayerCreation {...props} />
-        )}/>
-        <Route exact path="/endgame" render={(props) => (<FinalTerraform {...props}/>
-        )}/>
-        <Route exact path="/beta" render={() => (
-          <BetaAnnouncement />
-        )}/>
-        <Route component={Home}/>
-      </Switch>}
+      {device === "desktop" ?  <GeneralRouter /> : <MobileAlert />}
     </div>
   )
 };
