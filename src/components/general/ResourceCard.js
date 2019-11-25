@@ -9,6 +9,7 @@ class ResourceCard extends Component {
     color: `${this.props.player.color}Player`,
     terraRating: this.props.player.terraRating,
     resources: this.props.resources,
+    device: localStorage.getItem("device"),
     totalField: {
       resource: "",
       direction: ""
@@ -16,6 +17,7 @@ class ResourceCard extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.state)
     if (this.state.username === "" && localStorage.player){
       this.props.reloadPlayer(localStorage)
       this.props.reloadResources(localStorage.resources)
@@ -144,15 +146,15 @@ class ResourceCard extends Component {
           <div className="production">
           <span className="resourceHeader">{resourceName} Production: {resourceObj["production"]}</span>
           <div className="changeButtons" name={key}>
-            <button name="decProd" onClick={e => this.changeProduction(e)}>&darr;</button>
-            <button name="incProd" onClick={e => this.changeProduction(e)}>&uarr;</button>
+            <button className={`${this.state.device}Button`} name="decProd" onClick={e => this.changeProduction(e)}>&darr;</button>
+            <button className={`${this.state.device}Button`} name="incProd" onClick={e => this.changeProduction(e)}>&uarr;</button>
           </div>
           </div>
           <div className="amount">
           <span className="resourceHeader">Total {resourceName}: {resourceObj["amount"]}</span>
           <div className="changeButtons" name={key}>
-            <button name="decTot" onClick={(e) => this.displayForm(e, key)}>&darr;</button>
-            <button name="incTot" onClick={(e) => this.displayForm(e, key)}>&uarr;</button>
+            <button className={`${this.state.device}Button`} name="decTot" onClick={(e) => this.displayForm(e, key)}>&darr;</button>
+            <button className={`${this.state.device}Button`} name="incTot" onClick={(e) => this.displayForm(e, key)}>&uarr;</button>
           </div>
           </div>
           {this.state.totalField.resource === key ? this.renderForm(key) : null}
@@ -178,7 +180,7 @@ class ResourceCard extends Component {
       <form onSubmit={(e) => this.changeResources(e)}>
         <input type="text"></input>
         <br/>
-        <button className="formButton">Update Total</button>
+        <button className={`${this.state.device}Button formButton`}>Update Total</button>
       </form>
     )
   }
@@ -190,14 +192,14 @@ class ResourceCard extends Component {
           <h2>{this.state.username}'s Card</h2>
           <span className={this.state.color} id="terraRating">Terraform Rating: {this.state.terraRating}</span>
           <div className="terraRatingButton">
-            <button name="incTerr" onClick={(e) => this.changeTerraform(e)}>&uarr;</button>
-            <button name="decTerr" onClick={(e) => this.changeTerraform(e)}>&darr;</button>
+            <button className={`${this.state.device}Button`} name="incTerr" onClick={(e) => this.changeTerraform(e)}>&uarr;</button>
+            <button className={`${this.state.device}Button`} name="decTerr" onClick={(e) => this.changeTerraform(e)}>&darr;</button>
           </div>
           <div className="resources">
             {this.renderResources(this.state.resources)}
             <div className="underResourceButtons">
-              <button className="generation" onClick={() => this.endGeneration()}>New Generation</button>
-              <button className="quit" onClick={() => this.endCurrentGame()}>End Game</button>
+              <button className={`${this.state.device}Button generation`} onClick={() => this.endGeneration()}>New Generation</button>
+              <button className={`${this.state.device}Button quit`} onClick={() => this.endCurrentGame()}>End Game</button>
             </div>
           </div>
         </div>

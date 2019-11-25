@@ -32,11 +32,18 @@ const mobileChecker = (nav) => {
       }
     }
 
+    localStorage.removeItem("device")
+
     for (const key in windowObj) {
-      if (windowObj[key]["cb"] !== null) return windowObj[key]["device"]
+      if (windowObj[key]["cb"] !== null) {
+        console.log(key)
+        localStorage.setItem("device", windowObj[key]["device"])
+        return localStorage.getItem("device")
+      }
     }
 
-    return "desktop"
+    localStorage.setItem("device", "desktop")
+    return localStorage.getItem("device")
 }
 
 module.exports = mobileChecker
