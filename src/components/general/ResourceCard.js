@@ -9,6 +9,7 @@ class ResourceCard extends Component {
     color: `${this.props.player.color}Player`,
     terraRating: this.props.player.terraRating,
     resources: this.props.resources,
+    generation: this.props.player.generation,
     device: localStorage.getItem("device"),
     totalField: {
       resource: "",
@@ -189,7 +190,8 @@ class ResourceCard extends Component {
       <div id="resourceCard" className={this.state.color}>
         <div>
           <h2>{this.state.username}'s Card</h2>
-          <span className={this.state.color} id="terraRating">Terraform Rating: {this.state.terraRating}</span>
+          <p className={this.state.color} id="terraRating">Terraform Rating: {this.state.terraRating}</p>
+          <p className={this.state.color} id="generation">Generation: {this.state.generation}</p>
           <div className="terraRatingButton">
             <button className={`${this.state.device}Button`} name="incTerr" onClick={(e) => this.changeTerraform(e)}>&uarr;</button>
             <button className={`${this.state.device}Button`} name="decTerr" onClick={(e) => this.changeTerraform(e)}>&darr;</button>

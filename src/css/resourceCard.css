@@ -86,12 +86,16 @@
     width: 56%;
 }
 
-#terraRating {
+#terraRating, #generation {
     border-style: solid;
     background-color: black;
     color: white;
     margin: auto;
+    margin-right: 1%;
+    margin-left: 1%;
     padding: .5%;
+    width: 15%;
+    display: inline-block;
 }
 
 .terraRatingButton {
