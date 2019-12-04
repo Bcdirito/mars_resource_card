@@ -17,7 +17,6 @@ class ResourceCard extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.state)
     if (this.state.username === "" && localStorage.player){
       this.props.reloadPlayer(localStorage)
       this.props.reloadResources(localStorage.resources)

@@ -7,17 +7,13 @@ class PlayerCreation extends Component {
     state = {
         username: "",
         color: "red",
-        formName: "redPlayer"
+        formName: "redPlayer",
+        solo: false
     }
 
     componentDidMount = () => {
         this.props.logout()
         this.props.clearResources()
-    }
-
-    handleChange = e => {
-        if (e.target.name === "color") this.colorChange(e)
-        else this.nameChange(e)
     }
 
     colorChange = e => {
@@ -29,7 +25,7 @@ class PlayerCreation extends Component {
         }))
     }
 
-    nameChange = e => {
+    handleChange = e => {
         this.setState({
             ...this.state,
             [e.target.name]: e.target.value
@@ -39,7 +35,7 @@ class PlayerCreation extends Component {
     handleSubmit = e => {
         e.preventDefault()
         if (this.state.color !== "" && this.state.username !== ""){
-            this.props.createPlayer(e.target.username.value, e.target.color.value)
+            this.props.createPlayer(e.target.username.value, e.target.color.value, e.target.solo.value)
             this.props.history.replace("/card")
         } else {
             alert("Please enter your name")
@@ -56,16 +52,27 @@ class PlayerCreation extends Component {
                 <input type="text" name="username"
                  className="username" value={this.state.username} onChange={e => this.handleChange(e)}/>
                  <br/>
-                <label>Color:</label>
-                <br/>
-                <select name="color" className="colorSelector" value={this.state.value} onChange={e => this.handleChange(e)}>
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                    <option value="yellow">Yellow</option>
-                    <option value="black">Black</option>
-                </select>
-                <br/>
+                <div className="newGameSelectors">
+                    <div className="selector">
+                        <label>Color:</label>
+                        <br/>
+                            <select name="color" className="colorSelector" value={this.state.color} onChange={e => this.colorChange(e)}>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="black">Black</option>
+                        </select>
+                    </div>
+                    <div className="selector">
+                        <label>Game Type:</label>
+                        <br/>
+                        <select name="solo" className="gameSelector" value={this.state.solo} onChange={e => this.handleChange(e)}>
+                            <option value="group">Group</option>
+                            <option value="solo">Solo</option>
+                        </select>
+                    </div>
+                </div>
                 <button type="submit" className="submit">Create Player</button>
             </form>
         </div>
@@ -75,7 +82,7 @@ class PlayerCreation extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createPlayer: (playerName, color) => dispatch(createPlayer(playerName, color)),
+        createPlayer: (playerName, color, gameType) => dispatch(createPlayer(playerName, color, gameType)),
         logout: () => dispatch({type: "LOGOUT_PLAYER"}),
         clearResources: () => dispatch({type: "CLEAR_RESOURCES"})
     }

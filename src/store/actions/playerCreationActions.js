@@ -1,2 +1,2 @@
-export const createPlayer = (name, color) => ({type: "CREATE_PLAYER", name, color})
+export const createPlayer = (name, color, gameType) => ({type: "CREATE_PLAYER", name, color, gameType})
 
