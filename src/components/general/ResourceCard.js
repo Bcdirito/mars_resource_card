@@ -42,6 +42,14 @@ class ResourceCard extends Component {
     for (const key in this.props.resources){
       if (this.props.resources[key] !== this.state.resources[key]) {this.updateResources(this.props.resources)}
     }
+
+    if (this.state.generation !== this.props.player.generation){
+      debugger
+      this.setState({
+        ...this.state,
+        generation: this.props.player.generation
+      })
+    }
   }
 
   updateResources = (resources) => {
@@ -109,6 +117,7 @@ class ResourceCard extends Component {
     let answer = window.confirm("Has the generation ended?")
     if (answer === true) {
       this.newGeneration(this.state.resources, this.state.terraRating, true)
+      this.props.updateGeneration(this.state.generation)  
     }
   }
 
@@ -220,6 +229,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeProduction: (resource, amt) => dispatch(changeProduction(resource, amt)),
     changeResources: (resource, amt) => dispatch(changeResources(resource, amt)),
+    updateGeneration: (generation) => dispatch({type: "UPDATE_GENERATION"}),
     changeTerraform: (amt) => dispatch({type: "CHANGE_TERRAFORM", amt}),
     generateResources: (resources, rating) => dispatch(generateResources(resources, rating)),
     reloadPlayer: (player) => dispatch({type: "MAINTAIN_PLAYER", player}),

@@ -12,6 +12,7 @@ const playerReducer = (state = initialState, action) => {
             localStorage.setItem("player", action.name)
             localStorage.setItem("color", action.color)
             localStorage.setItem("terraRating", JSON.stringify(initialTerraRating))
+            localStorage.setItem("generation", JSON.stringify(state.generation))
             return {
                 playerName: action.name,
                 color: action.color,
@@ -34,6 +35,14 @@ const playerReducer = (state = initialState, action) => {
                 ...state,
                 terraRating: newRating
         }
+
+        case "UPDATE_GENERATION":
+            let newGeneration = Number(state.generation) + 1
+            localStorage.setItem("generation", JSON.stringify(newGeneration))
+            return {
+                ...state,
+                generation: newGeneration
+            }
         
         case "LOGOUT_PLAYER":
             localStorage.clear()
