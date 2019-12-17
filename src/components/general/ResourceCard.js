@@ -122,7 +122,7 @@ class ResourceCard extends Component {
 
   newGeneration = (resources, terraRating, newCardsBool=false) => {
     let newCardsAmt = newCardsBool === true ? Number(prompt("How many cards did you buy this turn?", "0")) * 3 : 0
-    let newGeneration = Object.assign(resources)
+    let newGeneration = Object.assign({}, resources)
     
     for (const key in newGeneration){
       if (key === "credits") {

@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {createPlayer} from "../../store/actions/playerCreationActions"
 import "../../css/playerCreation.css"
 
-class PlayerCreation extends Component {
+const PlayerCreation = (props) => {
     state = {
         username: "",
         color: "red",
@@ -42,8 +42,7 @@ class PlayerCreation extends Component {
         }
     }
 
-    render() {
-        return (
+    return (
         <div className="playerCreation">
             <h2>Create Your Player</h2>
             <form onSubmit={e => this.handleSubmit(e)} className={this.state.formName}>
@@ -76,16 +75,7 @@ class PlayerCreation extends Component {
                 <button type="submit" className="submit">Create Player</button>
             </form>
         </div>
-        )
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        createPlayer: (playerName, color, gameType) => dispatch(createPlayer(playerName, color, gameType)),
-        logout: () => dispatch({type: "LOGOUT_PLAYER"}),
-        clearResources: () => dispatch({type: "CLEAR_RESOURCES"})
-    }
+    )
 }
 
 export default connect(null, mapDispatchToProps)(PlayerCreation)
