@@ -41,10 +41,12 @@ class PlayerCreationContainer extends Component {
     handleColorChange = e => {
         this.setState({
             ...this.state,
-            [e.target.name]: e.target.value
-        }, ()=>this.setState({
-            formName: `${this.state.color}Player`
-        }))
+            playerData: {
+                ...this.state.playerData,
+                [e.target.name]: e.target.value,
+                formName: `${e.target.value}Player`
+            }
+        })
     }
 
     handleSubmit = e => {
@@ -60,7 +62,7 @@ class PlayerCreationContainer extends Component {
     render() {
         return (
             <div>
-                {this.state.playerCreation === true ? <PlayerCreationComponent playerData={this.state.playerData} handlePlayerCreation={(e) => this.handlePlayerCreation(e)}/> : <CreateCard handleSubmit={(e) => this.handleSubmit(e)}/>}
+                {this.state.playerCreation === true ? <PlayerCreationComponent playerData={this.state.playerData} handlePlayerCreation={(e) => this.handlePlayerCreation(e)} handleColorChange={e => this.handleColorChange(e)}/> : <CreateCard handleSubmit={(e) => this.handleSubmit(e)}/>}
             </div>
         )
     }

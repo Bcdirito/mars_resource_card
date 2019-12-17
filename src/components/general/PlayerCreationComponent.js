@@ -2,7 +2,6 @@ import React from 'react'
 import "../../css/playerCreation.css"
 
 const PlayerCreationComponent = (props) => {
-    console.log(props)
     return (
         <div className="playerCreation">
             <h2>Create Your Player</h2>
@@ -10,13 +9,13 @@ const PlayerCreationComponent = (props) => {
                 <label>Name:</label>
                 <br/>
                 <input type="text" name="username"
-                 className="username" value={props.playerData.username} onChange={e => this.handleChange(e)}/>
+                 className="username" value={props.playerData.username} onChange={e => props.handlePlayerCreation(e)}/>
                  <br/>
                 <div className="newGameSelectors">
                     <div className="selector">
                         <label>Color:</label>
                         <br/>
-                            <select name="color" className="colorSelector" value={props.playerData.color} onChange={e => this.colorChange(e)}>
+                            <select name="color" className="colorSelector" value={props.playerData.color} onChange={e => props.handleColorChange(e)}>
                             <option value="red">Red</option>
                             <option value="blue">Blue</option>
                             <option value="green">Green</option>
