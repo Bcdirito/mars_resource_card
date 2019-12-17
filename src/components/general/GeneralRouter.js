@@ -2,7 +2,7 @@ import React from "react"
 import {Switch, Route} from "react-router-dom"
 import Home from "./Home"
 import ResourceCard from "./ResourceCard"
-import PlayerCreation from "./PlayerCreationComponent"
+import PlayerCreationContainer from "./PlayerCreationContainer"
 import ContinueGame from "./ContinueGame"
 import FinalTerraform from './FinalTerraForm';
 import BetaAnnouncement from "../BetaAnnouncement"
@@ -20,7 +20,7 @@ const GeneralRouter = () => {
                 <ResourceCard {...props} />
             )}/>
             <Route exact path="/create-player" render={(props) => (
-                <PlayerCreation {...props} />
+                <PlayerCreationContainer {...props} />
             )}/>
             <Route exact path="/endgame" render={(props) => (<FinalTerraform {...props}/>
             )}/>
