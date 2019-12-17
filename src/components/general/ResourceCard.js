@@ -44,7 +44,6 @@ class ResourceCard extends Component {
     }
 
     if (this.state.generation !== this.props.player.generation){
-      debugger
       this.setState({
         ...this.state,
         generation: this.props.player.generation
