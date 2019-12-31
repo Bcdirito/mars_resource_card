@@ -5,7 +5,7 @@ const PlayerCreationComponent = (props) => {
     return (
         <div className="playerCreation">
             <h2>Create Your Player</h2>
-            <form /*onSubmit={e => this.handleSubmit(e)}*/ className={props.playerData.formName}>
+            <form onSubmit={e => props.renderCreateCard(e)} className={props.playerData.formName}>
                 <label>Name:</label>
                 <br/>
                 <input type="text" name="username"

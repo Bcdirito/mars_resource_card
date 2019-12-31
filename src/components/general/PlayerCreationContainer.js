@@ -59,10 +59,18 @@ class PlayerCreationContainer extends Component {
         }
     }
 
+    renderCreateCard = e => {
+        e.preventDefault()
+        this.setState({
+            ...this.state,
+            playerCreation: false
+        })
+    }
+
     render() {
         return (
             <div>
-                {this.state.playerCreation === true ? <PlayerCreationComponent playerData={this.state.playerData} handlePlayerCreation={(e) => this.handlePlayerCreation(e)} handleColorChange={e => this.handleColorChange(e)}/> : <CreateCard handleSubmit={(e) => this.handleSubmit(e)}/>}
+                {this.state.playerCreation === true ? <PlayerCreationComponent playerData={this.state.playerData} handlePlayerCreation={(e) => this.handlePlayerCreation(e)} renderCreateCard={e => this.renderCreateCard(e)} handleColorChange={e => this.handleColorChange(e)}/> : <CreateCard handleSubmit={(e) => this.handleSubmit(e)}/>}
             </div>
         )
     }
