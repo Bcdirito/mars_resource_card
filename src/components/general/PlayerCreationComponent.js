@@ -26,7 +26,7 @@ const PlayerCreationComponent = (props) => {
                     <div className="selector">
                         <label>Game Type:</label>
                         <br/>
-                        <select name="solo" className="gameSelector" value={props.playerData.solo} onChange={e => this.handleChange(e)}>
+                        <select name="solo" className="gameSelector" value={props.playerData.solo} onChange={e => props.handleGameStyleChange(e)}>
                             <option value="group">Group</option>
                             <option value="solo">Solo</option>
                         </select>

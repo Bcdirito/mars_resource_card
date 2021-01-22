@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import "../../css/createCard.css"
 
 const CreateCard = (props) => {
     return (
-        <div>
+        <div className={`createCard ${props.playerColor}Player`}>
             <h1>Set Up Phase</h1>
             <form onSubmit={(e) => props.handleSubmit(e)}>
                 <label>Total Starting Credits:</label>

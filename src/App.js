@@ -11,7 +11,7 @@ const App = (props) => {
 
   return (
     <div className="App">
-      {device === "desktop" ?  <GeneralRouter /> : <MobileAlert />}
+      {device === "Desktop" ?  <GeneralRouter /> : <MobileAlert />}
     </div>
   )
 };

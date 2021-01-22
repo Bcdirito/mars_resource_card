@@ -34,6 +34,16 @@ class PlayerCreationContainer extends Component {
         })
     }
 
+    handleGameStyleChange = (e) => {
+        this.setState({
+            ...this.state,
+            playerData: {
+                ...this.state.playerData,
+                solo: e.target.value
+            }
+        })
+    }
+
     handlePlayerCreation = (e) => {
         this.setState({
             ...this.state,
@@ -114,7 +124,7 @@ class PlayerCreationContainer extends Component {
     render() {
         return (
             <div>
-                {this.state.playerCreation === true ? <PlayerCreationComponent playerData={this.state.playerData} handlePlayerCreation={(e) => this.handlePlayerCreation(e)} renderCreateCard={e => this.renderCreateCard(e)} handleColorChange={e => this.handleColorChange(e)}/> : <CreateCard handleCreditChange={(e) => this.handleCreditChange(e)} handleSubmit={(e) => this.handleSubmit(e)} creditData={this.state.creditData}/>}
+                {this.state.playerCreation === true ? <PlayerCreationComponent playerData={this.state.playerData} handlePlayerCreation={(e) => this.handlePlayerCreation(e)} renderCreateCard={e => this.renderCreateCard(e)} handleColorChange={e => this.handleColorChange(e)} handleGameStyleChange={(e) => this.handleGameStyleChange(e)}/> : <CreateCard handleCreditChange={(e) => this.handleCreditChange(e)} handleSubmit={(e) => this.handleSubmit(e)} creditData={this.state.creditData} playerColor={this.state.playerData.color}/>}
             </div>
         )
     }
